@@ -2,13 +2,9 @@ package org.example;
 
 import java.util.function.Supplier;
 
-public class Calculator implements Supplier {
+public class Calculator {
     static Supplier<Calculator> instance = Calculator::new;
 
-    @Override
-    public Object get() {
-        return null;
-    }
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
@@ -17,4 +13,7 @@ public class Calculator implements Supplier {
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
 
+    Predicate<Integer> isPositive = x -> x > 0;
+
+    Consumer<Integer> println = System.out::println;
 }
